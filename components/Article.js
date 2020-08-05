@@ -86,7 +86,22 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
-  }
+  },
+  {
+    title: 'Maximus',
+    date: 'Sep 22nd, 60 AD',
+    firstParagraph: `My name is Maximus Decimus Meridius, commander of the Armies of the North,
+        General of the Felix Legions, loyal servant to the true emperor, Marcus Aurelius. Father to a murdered son,
+        husband to a murdered wife. And I will have my vengeance, in this life or the next.`,
+
+    secondParagraph: `My name is Maximus Decimus Meridius, commander of the Armies of the North,
+    General of the Felix Legions, loyal servant to the true emperor, Marcus Aurelius. Father to a murdered son,
+    husband to a murdered wife. And I will have my vengeance, in this life or the next.`,
+
+    thirdParagraph: `My name is Maximus Decimus Meridius, commander of the Armies of the North,
+    General of the Felix Legions, loyal servant to the true emperor, Marcus Aurelius. Father to a murdered son,
+    husband to a murdered wife. And I will have my vengeance, in this life or the next.`
+  },
 ];
   // Step 1: Write a component called 'articleMaker' to create an article.
   // Your component is a function that takes an article object as its only argument,
