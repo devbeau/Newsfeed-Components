@@ -29,8 +29,8 @@ let menuItems = [
    
     let menu = createNewElement('div', 'menu');
     let listContainer = createNewElement('ul', 0 , 0);
-    let listArr = menuArr.map((item, ind) => {
-      return createNewElement('li',0, `${ind}`);
+    let listArr = menuArr.map((item) => {
+      return createNewElement('li',0, `${item}`);
     });
 
    menu.appendChild(listContainer);

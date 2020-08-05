@@ -88,7 +88,7 @@ const data = [
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   },
   {
-    title: 'Maximus',
+    title: 'Maximus', // New Article
     date: 'Sep 22nd, 60 AD',
     firstParagraph: `My name is Maximus Decimus Meridius, commander of the Armies of the North,
         General of the Felix Legions, loyal servant to the true emperor, Marcus Aurelius. Father to a murdered son,
@@ -109,15 +109,19 @@ const data = [
 
     function articleMaker(articleObj){
 
+
+      // createNewElement function takes element, className, and textcontent
+      // and uses optional parameters to assign them to the element
       function createNewElement(htmlElement, className = 0, textContent = 0){
         className = className || 0;
         textContent = textContent || 0;
         let newElement = document.createElement(htmlElement);
-        className !== 0 ? newElement.classList.add('className') : newElement;
+        className !== 0 ? newElement.classList.add(className) : newElement;
         textContent !== 0 ? newElement.textContent = textContent : textContent = null;
         return newElement;
       }
-     
+
+      // instantiates the elements
       let article = createNewElement('div', 'article');
       let header = createNewElement('h2', 0 ,articleObj.title);
       let date = createNewElement('p', "date", articleObj.date);
@@ -125,29 +129,41 @@ const data = [
       let pgraphTwo = createNewElement('p', 0, articleObj.secondParagraph);
       let pgraphThree = createNewElement('p', 0, articleObj.thirdParagraph);
       let expandBtn = createNewElement('span', 'expandButton', '+');
-
-      console.log(article)
-
+      
+      console.log("articleMaker -> article", article)
+      console.log("articleMaker -> header", header)
+      console.log("articleMaker -> date", date)
+      console.log("articleMaker -> pgraphOne", pgraphOne)
+      console.log("articleMaker -> pgraphTwo", pgraphThree)
+      console.log("articleMaker -> pgraphThree", pgraphThree)
+      console.log("articleMaker -> expandBtn", expandBtn)
+      
+      // appends the elements into the structure
       article.appendChild(header);
       article.appendChild(date);
       article.appendChild(pgraphOne);
       article.appendChild(pgraphTwo);
       article.appendChild(pgraphThree);
+      article.appendChild(expandBtn);
 
+      //toggle the article with a click
       expandBtn.addEventListener('click', (event) => {
         article.classList.toggle('article-open');
-        console.log("articleMaker -> event", event);
+        console.log("expandBtn -> event", event);
       });
-      
+      console.log("Article just before return", article);
       return article;
     }
 
+    // Append each article with a for loop using our function
     let container = document.querySelector('.articles');
 
     data.forEach((article) =>{
       const newArticle = articleMaker(article);
       container.appendChild(newArticle);
     });
+
+
   // <div class="article">
   //   <h2>{title of the article}</h2>
   //   <p class="date">{date of the article}</p>
