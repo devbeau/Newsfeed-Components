@@ -1,5 +1,7 @@
 // This is the data we will be using to create our articles. Look at it, then proceed to line 93.
 // OPTIONAL: if you're feeling adventurous, try to make this data an export from a different module, and import it here.
+import { gsap } from 'gsap';
+
 // You can read about ES6 modules here: https://exploringjs.com/es6/ch_modules.html#sec_basics-of-es6-modules
 const data = [
   {
@@ -101,7 +103,21 @@ const data = [
     thirdParagraph: `My name is Maximus Decimus Meridius, commander of the Armies of the North,
     General of the Felix Legions, loyal servant to the true emperor, Marcus Aurelius. Father to a murdered son,
     husband to a murdered wife. And I will have my vengeance, in this life or the next.`
-  },
+  },{
+    title: 'New ARticle 2', // New Article
+    date: 'Sep 22nd, 60 AD',
+    firstParagraph: `My name is Maximus Decimus Meridius, commander of the Armies of the North,
+        General of the Felix Legions, loyal servant to the true emperor, Marcus Aurelius. Father to a murdered son,
+        husband to a murdered wife. And I will have my vengeance, in this life or the next.`,
+
+    secondParagraph: `My name is Maximus Decimus Meridius, commander of the Armies of the North,
+    General of the Felix Legions, loyal servant to the true emperor, Marcus Aurelius. Father to a murdered son,
+    husband to a murdered wife. And I will have my vengeance, in this life or the next.`,
+
+    thirdParagraph: `My name is Maximus Decimus Meridius, commander of the Armies of the North,
+    General of the Felix Legions, loyal servant to the true emperor, Marcus Aurelius. Father to a murdered son,
+    husband to a murdered wife. And I will have my vengeance, in this life or the next.`
+  }
 ];
   // Step 1: Write a component called 'articleMaker' to create an article.
   // Your component is a function that takes an article object as its only argument,
@@ -129,16 +145,17 @@ const data = [
       let pgraphOne = createNewElement('p', 0, articleObj.firstParagraph);
       let pgraphTwo = createNewElement('p', 0, articleObj.secondParagraph);
       let pgraphThree = createNewElement('p', 0, articleObj.thirdParagraph);
-      let expandBtn = createNewElement('span', 'expandButton', '+');
+      let expandBtn = createNewElement('span', 'expandButton', 'Click to Open');
+      let readBtn = createNewElement('span', 'readButton', 'Mark as Read');
       
-      console.log("articleMaker -> article", article)
-      console.log("articleMaker -> header", header)
-      console.log("articleMaker -> date", date)
-      console.log("articleMaker -> pgraphOne", pgraphOne)
-      console.log("articleMaker -> pgraphTwo", pgraphThree)
-      console.log("articleMaker -> pgraphThree", pgraphThree)
-      console.log("articleMaker -> expandBtn", expandBtn)
-      
+      console.log("articleMaker -> article", article);
+      console.log("articleMaker -> header", header);
+      console.log("articleMaker -> date", date);
+      console.log("articleMaker -> pgraphOne", pgraphOne);
+      console.log("articleMaker -> pgraphTwo", pgraphThree);
+      console.log("articleMaker -> pgraphThree", pgraphThree);
+      console.log("articleMaker -> expandBtn", expandBtn);
+      console.log("articleMaker -> readBtn", readBtn);
       // appends the elements into the structure
       article.appendChild(header);
       article.appendChild(date);
@@ -146,14 +163,36 @@ const data = [
       article.appendChild(pgraphTwo);
       article.appendChild(pgraphThree);
       article.appendChild(expandBtn);
-
+      article.appendChild(readBtn);
       //toggle the article with a click
+      console.log(expandBtn.parentNode);
+      // expandBtn.style.fontSize = '18px'
+
       expandBtn.addEventListener('click', (event) => {
+        let parNode = event.target.parentNode;
+        console.log(parNode);
+        
+        if  (parNode.classList.contains('article-open')){
+          closeArticle(parNode);
+          expandBtn.textContent = 'Click to Open';
+        } else {
+          openArticle(parNode);
+          expandBtn.textContent = 'Click to Close';
+        }
+        
         article.classList.toggle('article-open');
         console.log("expandBtn -> event", event);
+      
       });
-      expandBtn.style.fontSize = '18px';
-      article.style.paddingBottom =
+
+      readBtn.addEventListener('click', (event) => {
+        let parNode = event.target.parentNode;
+        console.log(parNode);
+        parNode.remove();
+        console.log("readBtn -> event", event);
+      
+      });
+
       console.log("Article just before return", article);
       return article;
     }
@@ -166,7 +205,18 @@ const data = [
       container.appendChild(newArticle);
     });
 
-
+    function openArticle(parentArticle){
+      gsap.to(parentArticle, {
+        duration: 0.25,
+        height: "auto",
+      })
+    }
+      function closeArticle(parentArticle){
+        gsap.to(parentArticle, {
+          duration: 0.25,
+          height: "50px",
+        })
+    }
   // <div class="article">
   //   <h2>{title of the article}</h2>
   //   <p class="date">{date of the article}</p>
@@ -185,5 +235,4 @@ const data = [
   // to create a div.article element and append it to the DOM inside div.articles (see index.html).
 
   // Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
-  // Refresh the page to see the new article.
-
+  // Refresh the page to see the new article
