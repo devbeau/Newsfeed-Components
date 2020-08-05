@@ -152,6 +152,8 @@ const data = [
         article.classList.toggle('article-open');
         console.log("expandBtn -> event", event);
       });
+      expandBtn.style.fontSize = '18px';
+      article.style.paddingBottom =
       console.log("Article just before return", article);
       return article;
     }
