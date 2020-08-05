@@ -18,37 +18,49 @@ let menuItems = [
 
   function menuMaker(menuArr){
 
+    // createNewElement function takes element, className, and textcontent
+    // and uses optional parameters to assign them to the element
     function createNewElement(htmlElement, className = 0, textContent = 0){
       className = className || 0;
       textContent = textContent || 0;
       let newElement = document.createElement(htmlElement);
+      // Ternary conditions handle optional parameters
       className !== 0 ? newElement.classList.add(className) : newElement;
       textContent !== 0 ? newElement.textContent = textContent : textContent = null;
       return newElement;
     }
-   
+
+    // instantiates our html elements
     let menu = createNewElement('div', 'menu');
     let listContainer = createNewElement('ul', 0 , 0);
-    let listArr = menuArr.map((item) => {
-      return createNewElement('li',0, `${item}`);
+    let listArr = menuArr.map((item) => { // loop over array
+      return createNewElement('li',0, item); // for li items
     });
 
-   menu.appendChild(listContainer);
-   listArr.forEach(item => listContainer.appendChild(item));
+    console.log("menuMaker -> menu", menu)
+    console.log("menuMaker -> listContainer", listContainer)
+    console.log("menuMaker -> listArr", listArr)
+    
+    // append children to menu
+    menu.appendChild(listContainer);
+    listArr.forEach(item => listContainer.appendChild(item));
 
-   let menuBtn = document.querySelector('.menu-button');
-      menuBtn.addEventListener('click', (event) => {
-        menu.classList.toggle('menu--open');
-        console.log("menuMaker  -> event", event);
+    // add event listener to menu button
+    let menuBtn = document.querySelector('.menu-button');
+    menuBtn.addEventListener('click', (event) => {
+      menu.classList.toggle('menu--open');
+      console.log("menuMaker  -> event", event);
     });
     
+    console.log("Menu just before return", menu)
     return menu;
   }
 
   let header = document.querySelector('.header');
   const newMenu = menuMaker(menuItems);
   header.appendChild(newMenu);
- 
+  
+  console.log("newMenu", newMenu);
 
   // The 'menuMaker' takes an array of menu items as its only argument.
 

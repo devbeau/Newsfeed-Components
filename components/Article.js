@@ -116,6 +116,7 @@ const data = [
         className = className || 0;
         textContent = textContent || 0;
         let newElement = document.createElement(htmlElement);
+        //ternary conditions for optional parameters
         className !== 0 ? newElement.classList.add(className) : newElement;
         textContent !== 0 ? newElement.textContent = textContent : textContent = null;
         return newElement;
