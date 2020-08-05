@@ -184,7 +184,7 @@ const data = [
         console.log("expandBtn -> event", event);
       
       });
-
+      // delete articles once read
       readBtn.addEventListener('click', (event) => {
         let parNode = event.target.parentNode;
         console.log(parNode);
@@ -205,6 +205,7 @@ const data = [
       container.appendChild(newArticle);
     });
 
+    //open and close articles
     function openArticle(parentArticle){
       gsap.to(parentArticle, {
         duration: 0.25,
