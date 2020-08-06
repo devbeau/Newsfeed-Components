@@ -84,7 +84,7 @@ function addBtnRead(readBtn){
 // instantiates the article to be appended
 function articleMaker(articleObj){
 
-  let elementsArray = instantiateElements(articleObj); //array for structuring
+  let elementsArray = instantiateElements(articleObj); //array for structureChildren
   let [article, header, date, pgraphOne, // Variable
       pgraphTwo, pgraphThree, expandBtn, // Declaration
       readBtn] = elementsArray;  // Deconstruction for other
@@ -117,10 +117,10 @@ function appendArticleToPage(article){
 
 // will create and append an article with only the article data
 function constructArticle(articleData){
-  if (!Array.isArray(articleData)){
+  if (!Array.isArray(articleData)){ // if not an array
     appendArticleToPage(articleData);
   }
-  else {
+  else {                            // if an array
     articleData.forEach((article)=>{
     appendArticleToPage(article);
     });
