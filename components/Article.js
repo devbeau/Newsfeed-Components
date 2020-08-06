@@ -163,6 +163,8 @@ function makeForm(){
   form.id = 'articleForm';
   let container = document.querySelector('.articles');
 
+  // grabs data from form and constructs an object to be read by
+  // construct article function
   button.addEventListener('click', (event) =>{
     let article = fromForm();
     console.log("article!!!", article);
