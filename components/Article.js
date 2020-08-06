@@ -136,6 +136,7 @@ let data = dataFunc(); // gets data from dataFunc
       }
     }
 
+    //creates an input with name and type attributes optional
     function createNewInput(htmlElement, name = 0, type = 0){
       name = name || 0;
       type = type || 0;
@@ -145,7 +146,8 @@ let data = dataFunc(); // gets data from dataFunc
       type !== 0 ? newElement.setAttribute('type', type) : newElement.setAttribute('type', null);
       return newElement;
     }
-
+    // makes and appends the form with inputs for each property of the article
+    // object
     function makeForm(){
       let form = createNewElement('form','article-form');
       let inputTitle = createNewInput('input','title','text');
@@ -179,7 +181,7 @@ let data = dataFunc(); // gets data from dataFunc
 
       container.appendChild(form);
     }
-   
+    // creates an object from form data
     function fromForm(){
       let form = document.forms.articleForm;
       console.log(form.elements);
@@ -195,4 +197,4 @@ let data = dataFunc(); // gets data from dataFunc
     }
 
     constructArticle(data); // execute component construction
-    makeForm();
+    makeForm(); // makes the form and appends it to the page
