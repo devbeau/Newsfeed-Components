@@ -2,7 +2,8 @@ import { gsap } from 'gsap';
 import { dataFunc } from '../modules/articledata';
 let data = dataFunc(); // gets data from dataFunc
 
-  
+// createNewElement function takes element, className, and textcontent
+// and uses optional parameters to assign them to the element
 function createNewElement(htmlElement, className = 0, textContent = 0){
   className = className || 0;
   textContent = textContent || 0;
